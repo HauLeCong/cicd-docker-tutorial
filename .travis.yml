@@ -8,3 +8,14 @@ before_install:
 script:
   - docker run -e CI=true docker14520263/cicd-docker-tutorial npm run test
 
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "cicd-docker-tutorial"
+  env: "Cicd-docker-tutorial-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-778977513196"
+  bucket_path: "cicd-docker-tutorial"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
