@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t docker14520263/cicd-docker-tutorial -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true docker14520263/cicd npm run test
+
